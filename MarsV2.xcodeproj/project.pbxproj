@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D596D2C20B4EDDE001BD41B /* MarsHabitatPricer.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3D596D2B20B4EDDE001BD41B /* MarsHabitatPricer.mlmodel */; };
 		3DA1313520ABF8E800D5CFAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1313420ABF8E800D5CFAA /* AppDelegate.swift */; };
 		3DA1313720ABF8E800D5CFAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA1313620ABF8E800D5CFAA /* ViewController.swift */; };
 		3DA1313A20ABF8E800D5CFAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DA1313820ABF8E800D5CFAA /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D596D2B20B4EDDE001BD41B /* MarsHabitatPricer.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MarsHabitatPricer.mlmodel; sourceTree = "<group>"; };
 		3DA1313120ABF8E800D5CFAA /* MarsV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DA1313420ABF8E800D5CFAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DA1313620ABF8E800D5CFAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				3DA1313420ABF8E800D5CFAA /* AppDelegate.swift */,
 				3DA1313620ABF8E800D5CFAA /* ViewController.swift */,
 				3DA1313820ABF8E800D5CFAA /* Main.storyboard */,
+				3D596D2B20B4EDDE001BD41B /* MarsHabitatPricer.mlmodel */,
 				3DA1313B20ABF8E900D5CFAA /* Assets.xcassets */,
 				3DA1313D20ABF8E900D5CFAA /* LaunchScreen.storyboard */,
 				3DA1314020ABF8E900D5CFAA /* Info.plist */,
@@ -137,6 +140,7 @@
 			files = (
 				3DA1313720ABF8E800D5CFAA /* ViewController.swift in Sources */,
 				3DA1313520ABF8E800D5CFAA /* AppDelegate.swift in Sources */,
+				3D596D2C20B4EDDE001BD41B /* MarsHabitatPricer.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

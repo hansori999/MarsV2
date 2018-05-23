@@ -15,6 +15,21 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
 
     @IBOutlet weak var pickerView: UIPickerView!
     
+    
+    /* Initialize CoreML Model */
+    let model = MarsHabitatPricer()
+    
+    /// Formatter for the output.
+    let priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 0
+        formatter.usesGroupingSeparator = true
+        formatter.locale = Locale(identifier: "en_US")
+        return formatter
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -28,9 +43,35 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
     /// When values are changed, update the predicted price.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print(" Selected row=",row)
-        // updatePredictedPrice()
+        updatePredictedPrice()
     }
     
+    /**
+     The main logic for the app, performing the integration with Core ML.
+     First gather the values for input to the model. Then have the model generate
+     a prediction with those inputs. Finally, present the predicted value to
+     the user.
+     */
+    func updatePredictedPrice() {
+        func selectedRow(for feature: Feature) -> Int {
+            return pickerView.selectedRow(inComponent: feature.rawValue)
+        }
+        
+        let solarPanels = self.value(for: selectedRow(for: .solarPanels), feature: .solarPanels)
+        let greenhouses = self.value(for: selectedRow(for: .greenhouses), feature: .greenhouses)
+        let size = self.value(for: selectedRow(for: .size), feature: .size)
+        
+        print("solarPanels =", solarPanels,greenhouses, size)
+        
+        guard let marsHabitatPricerOutput = try? model.prediction(solarPanels: solarPanels, greenhouses: greenhouses, size: size) else {
+            fatalError("Unexpected runtime error.")
+        }
+        
+        let price = marsHabitatPricerOutput.price
+        print(" Result=",price)
+        // priceLabel.text = priceFormatter.string(for: price)
+    }
+
     /// Accessor for picker values.
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         guard let feature = Feature(rawValue: component) else {
